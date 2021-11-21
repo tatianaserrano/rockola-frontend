@@ -3,16 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TablaCancionesComponent } from './components/tabla-canciones/tabla-canciones.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TablaPlaylistComponent } from './components/tabla-playlist/tabla-playlist.component';
+import { CancionesService } from './services/canciones.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CancionesComponent } from './components/canciones/canciones.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    TablaCancionesComponent,
+    NotFoundComponent,
+    TablaPlaylistComponent,
+    CancionesComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CancionesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
