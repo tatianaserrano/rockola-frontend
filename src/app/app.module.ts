@@ -12,6 +12,8 @@ import { CancionesService } from './services/canciones.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CancionesComponent } from './components/canciones/canciones.component';
 import { ErrorComponent } from './components/error/error.component';
+import { FormularioCancionesComponent } from './components/formulario-canciones/formulario-canciones.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { ErrorComponent } from './components/error/error.component';
     NotFoundComponent,
     TablaPlaylistComponent,
     CancionesComponent,
-    ErrorComponent
+    ErrorComponent,
+    FormularioCancionesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [CancionesService],
   bootstrap: [AppComponent]

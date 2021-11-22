@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { CancionModel } from 'src/app/models/cancion';
 import { CancionesService } from 'src/app/services/canciones.service';
 
 @Component({
@@ -9,12 +10,14 @@ import { CancionesService } from 'src/app/services/canciones.service';
 })
 export class TablaCancionesComponent implements OnInit {
 
-  public canciones: any[] = [];
+  @Output() showAlert = new EventEmitter()
+  public canciones: CancionModel[] = [];
   constructor(private cancionesService: CancionesService, private router: Router) { }
 
 
   async ngOnInit(): Promise<void>{
     this.canciones = await this.obtenerCanciones();
+    console.log(this.canciones)
   }
 
   private async obtenerCanciones(): Promise<any> {
@@ -29,11 +32,14 @@ export class TablaCancionesComponent implements OnInit {
   public eliminarCancion(id: number){
     this.cancionesService.eliminarCancion(id).then(async response => {
       if(response.message === 'deleted'){
+        this.showAlert.emit(true);
         this.canciones = await this.obtenerCanciones();
       }
     })
   }
 
-  
-
+  public irActualizarCancion(cancion: CancionModel){
+    localStorage.setItem('cancionActualizar', JSON.stringify(cancion));
+    this.router.navigate(['/agregar-canciones']);
+  }
 }

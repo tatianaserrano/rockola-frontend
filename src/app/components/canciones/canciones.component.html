@@ -1,6 +1,8 @@
 <div class="contenedor">
-    <h1 class="title">Lista canciones</h1>
-    <div class="table">
-        <app-tabla-canciones></app-tabla-canciones>
-    </div>
+  <div class="alert alert-success" role="alert" *ngIf="showAlert">
+    {{messageAlert}}
+  </div>
+  <h1 class="title">Lista canciones</h1>
+  <app-tabla-canciones (showAlert)="showAlertDeleted($event)"></app-tabla-canciones>
+  <button type="button" class="btn btn-primary" routerLink="/agregar-canciones">Agregar</button>
 </div>

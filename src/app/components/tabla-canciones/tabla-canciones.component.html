@@ -14,7 +14,12 @@
         <td>{{ cancion.nombre }}</td>
         <td>{{ cancion.genero }}</td>
         <td>{{ cancion.artista }}</td>
-        <td><button type="button" class="btn btn-danger" (click)="eliminarCancion(cancion.idcancion)">Eliminar</button></td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="eliminarCancion(cancion.idcancion)">Eliminar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="irActualizarCancion(cancion)">Actualizar</button>
+        </td>
       </tr>
     </tbody>
   </table>
