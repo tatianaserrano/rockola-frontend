@@ -19,7 +19,8 @@ export class CancionesComponent implements OnInit {
 
   public showAlertMethod(): void {
     this.messageAlert = localStorage.getItem('alertMessage') || '';
-    this.showAlert = this.messageAlert !== null;
+    this.showAlert = this.messageAlert !== '';
+    console.log(this.showAlert);
     this.deleteAlert();
   }
 
