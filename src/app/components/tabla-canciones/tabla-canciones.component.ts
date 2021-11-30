@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CancionModel } from 'src/app/models/cancion';
 import { CancionesService } from 'src/app/services/canciones.service';
@@ -10,12 +10,14 @@ import { CancionesService } from 'src/app/services/canciones.service';
 })
 export class TablaCancionesComponent implements OnInit {
 
-  @Output() showAlert = new EventEmitter()
+  @Input() subtitulo: string = '';
+  @Output() dataAlert = new EventEmitter()
   public canciones: CancionModel[] = [];
   constructor(private cancionesService: CancionesService, private router: Router) { }
 
 
   async ngOnInit(): Promise<void>{
+    console.log(this.subtitulo);
     this.canciones = await this.obtenerCanciones();
     console.log(this.canciones)
   }
@@ -32,7 +34,7 @@ export class TablaCancionesComponent implements OnInit {
   public eliminarCancion(id: number){
     this.cancionesService.eliminarCancion(id).then(async response => {
       if(response.message === 'deleted'){
-        this.showAlert.emit(true);
+        this.dataAlert.emit({showAlert: true, messageAlert: 'Canción eliminada correctamente'});
         this.canciones = await this.obtenerCanciones();
       }
     })

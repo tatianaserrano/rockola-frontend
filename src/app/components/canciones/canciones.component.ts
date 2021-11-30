@@ -10,10 +10,12 @@ export class CancionesComponent implements OnInit {
 
   public showAlert = false;
   public messageAlert = '';
+  public subtituloTabla = 'Este es el subtitulo para una tabla';
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     //this.showAlert = this.activatedRoute.snapshot.queryParams.showAlert === 'true';
+    console.log(this.activatedRoute.snapshot)
     this.showAlertMethod();
   }
 
@@ -25,8 +27,8 @@ export class CancionesComponent implements OnInit {
   }
 
   public showAlertDeleted(event: any){
-    this.showAlert = event;
-    this.messageAlert = 'Cancion borrada exitosamente';
+    this.showAlert = event.showAlert;
+    this.messageAlert = event.messageAlert;
     this.deleteAlert();
   }
 
@@ -35,7 +37,7 @@ export class CancionesComponent implements OnInit {
       setTimeout(() => {
         this.showAlert = false;
         localStorage.clear();
-      }, 5000)
+      }, 3000)
     }
   }
 

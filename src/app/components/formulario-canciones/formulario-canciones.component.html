@@ -19,7 +19,7 @@
       <label for="exampleInputPassword1" class="form-label">Artista</label>
       <input type="text" class="form-control" id="exampleInputPassword1" formControlName="artista"/>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="agregarCancion()" *ngIf="!cancionActualizar">Agregar</button>
-    <button type="submit" class="btn btn-primary" (click)="actualizarCancion()" *ngIf="cancionActualizar">Actualizar</button>
+    <button type="submit" class="btn btn-primary" (click)="agregarCancion()" *ngIf="!cancionActualizar" [disabled]="formGroup.invalid">Agregar</button>
+    <button type="submit" class="btn btn-primary" (click)="actualizarCancion()" *ngIf="cancionActualizar" [disabled]="formGroup.invalid">Actualizar</button>
 </form>
 </div>

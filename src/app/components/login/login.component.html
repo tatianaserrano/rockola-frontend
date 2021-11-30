@@ -1,0 +1,15 @@
+<div class="contenedor">
+    <h1>Iniciar sersión</h1>
+    <form [formGroup]="formGroup">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Correo</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="correo"/>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="contrasena"/>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Iniciar sesión</button>
+  </form>
+</div>
+  

@@ -28,7 +28,7 @@ export class FormularioCancionesComponent implements OnInit {
     this.cancionesService.agregarCancion(cancion).then(response => {
       console.log(response);
       localStorage.setItem('alertMessage', 'Canción creada correctamente');
-      this.router.navigate(['/canciones'], { queryParams: {showAlert: true} });
+      this.router.navigate(['/canciones'], { queryParams: {showAlert: 'agregar'} });
     }).catch(error => {
       this.router.navigate(['/error']);
     })
@@ -41,7 +41,7 @@ export class FormularioCancionesComponent implements OnInit {
 
   public buidlForm(){
     this.formGroup = this.formBuilder.group({
-      nombre: [this.cancionActualizar?.nombre, Validators.required],
+      nombre: [this.cancionActualizar?.nombre, [Validators.required]],
       genero: [this.cancionActualizar?.genero, Validators.required],
       artista: [this.cancionActualizar?.artista, Validators.required],
     });
@@ -53,7 +53,7 @@ export class FormularioCancionesComponent implements OnInit {
       console.log(response);
       if(response.message === 'updated'){
         localStorage.setItem('alertMessage', 'Canción actualizada correctamente');
-        this.router.navigate(['/canciones']);
+        this.router.navigate(['/canciones'], { queryParams: {showAlert: 'actualizar'}});
       }
     }).catch(error => {
       this.router.navigate(['/error']);

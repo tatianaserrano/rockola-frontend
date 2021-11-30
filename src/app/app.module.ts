@@ -14,6 +14,9 @@ import { CancionesComponent } from './components/canciones/canciones.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FormularioCancionesComponent } from './components/formulario-canciones/formulario-canciones.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
+import { FirstHeaderComponent } from './components/first-header/first-header.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     TablaPlaylistComponent,
     CancionesComponent,
     ErrorComponent,
-    FormularioCancionesComponent
+    FormularioCancionesComponent,
+    RegisterComponent,
+    FirstHeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
